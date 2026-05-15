@@ -33,14 +33,7 @@ function VehicleImage() {
           <p className="text-white/15 text-[9px]">/public/assets/vehicle/suburban.jpg</p>
         </div>
       )}
-      {/* Placeholder always visible until image loads */}
-      {!imgError && (
-        <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 pointer-events-none" aria-hidden="true">
-          <p className="text-white/10 text-[10px] tracking-luxury uppercase">
-            /public/assets/vehicle/suburban.jpg
-          </p>
-        </div>
-      )}
+
       {/* Gold overlay gradient */}
       <div
         className="absolute bottom-0 left-0 right-0 h-1/3 pointer-events-none"
@@ -119,7 +112,7 @@ export default function About() {
           {/* ── Image column ──
               Place vehicle interior/exterior photo at: /public/assets/vehicle/suburban.jpg */}
           <AnimatedSection delay={200} className="relative">
-            <div className="relative aspect-[16/10] lg:aspect-[4/3] overflow-hidden">
+            <div className="relative aspect-square overflow-hidden">
               {/* Gold frame accent */}
               <div className="absolute -top-3 -right-3 w-full h-full border border-km-gold/25 z-0" aria-hidden="true" />
               <VehicleImage />
