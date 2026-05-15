@@ -13,7 +13,7 @@ function VehicleImage() {
           src="/assets/vehicle/suburban.jpg"
           alt="KM Executive Transportation — Black Chevrolet Suburban"
           fill
-          className="object-cover"
+          className="object-cover object-center"
           sizes="(max-width: 1024px) 100vw, 50vw"
           onError={() => setImgError(true)}
         />
@@ -119,7 +119,7 @@ export default function About() {
           {/* ── Image column ──
               Place vehicle interior/exterior photo at: /public/assets/vehicle/suburban.jpg */}
           <AnimatedSection delay={200} className="relative">
-            <div className="relative aspect-[4/5] overflow-hidden">
+            <div className="relative aspect-[16/10] lg:aspect-[4/3] overflow-hidden">
               {/* Gold frame accent */}
               <div className="absolute -top-3 -right-3 w-full h-full border border-km-gold/25 z-0" aria-hidden="true" />
               <VehicleImage />
