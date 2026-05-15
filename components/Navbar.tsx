@@ -45,9 +45,9 @@ export default function Navbar() {
               <Image
                 src="/assets/logo/logo.png"
                 alt="KM Executive Transportation"
-                width={140}
-                height={56}
-                className="h-12 w-auto object-contain"
+                width={200}
+                height={80}
+                className="h-16 w-auto object-contain"
                 onError={() => setLogoError(true)}
                 priority
               />

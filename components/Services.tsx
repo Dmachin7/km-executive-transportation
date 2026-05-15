@@ -87,7 +87,7 @@ export default function Services() {
                 {/* Book link */}
                 <div className="mt-8 pt-6 border-t border-white/5">
                   <a
-                    href="mailto:kmexecutivetransportationllc@gmail.com"
+                    href="#contact"
                     className="inline-flex items-center gap-2 text-km-gold text-[10px] tracking-luxury uppercase font-semibold hover:gap-3 transition-all duration-200"
                   >
                     Book This Service

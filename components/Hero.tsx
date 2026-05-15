@@ -68,7 +68,7 @@ export default function Hero() {
         {/* CTAs */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <a
-            href="mailto:kmexecutivetransportationllc@gmail.com"
+            href="#contact"
             className="btn-gold w-full sm:w-auto text-center"
           >
             Book Your Ride
