@@ -13,7 +13,8 @@ function VehicleImage() {
           src="/assets/vehicle/suburban.png"
           alt="KM Executive Transportation — Black Chevrolet Suburban"
           fill
-          className="object-cover object-center"
+          className="object-cover"
+          style={{ objectPosition: '65% center' }}
           sizes="(max-width: 1024px) 100vw, 50vw"
           onError={() => setImgError(true)}
         />
