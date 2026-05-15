@@ -2,7 +2,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-[70vh] md:min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-[100svh] md:min-h-screen flex items-center justify-center overflow-hidden"
       aria-label="Hero"
     >
       {/* ── Background image + overlay ──
@@ -49,7 +49,7 @@ export default function Hero() {
         </h1>
 
         {/* Badge */}
-        <p className="text-[9px] md:text-[10px] tracking-luxury uppercase text-white/50 font-semibold mb-6 md:mb-5">
+        <p className="text-[8px] tracking-[0.12em] md:text-[10px] md:tracking-luxury uppercase text-white/50 font-semibold mb-6 md:mb-5">
           Professional &nbsp;•&nbsp; Reliable &nbsp;•&nbsp; Executive &nbsp;•&nbsp; 24/7
         </p>
 
