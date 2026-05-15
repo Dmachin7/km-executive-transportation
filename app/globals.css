@@ -55,6 +55,17 @@ body {
   @apply inline-block border border-km-gold text-white hover:bg-km-gold hover:text-black text-xs font-bold tracking-luxury uppercase px-8 py-4 transition-all duration-300;
 }
 
+/* ── Hero background — mobile pulls back zoom, desktop centers ── */
+.hero-bg {
+  background-size: cover;
+  background-position: center top;
+}
+@media (min-width: 768px) {
+  .hero-bg {
+    background-position: center center;
+  }
+}
+
 /* ── Scrollbar ── */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--km-black); }
