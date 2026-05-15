@@ -10,7 +10,7 @@ function VehicleImage() {
     <div className="relative z-10 w-full h-full bg-[#1a1510]">
       {!imgError && (
         <Image
-          src="/assets/vehicle/suburban.jpg"
+          src="/assets/vehicle/suburban.png"
           alt="KM Executive Transportation — Black Chevrolet Suburban"
           fill
           className="object-cover object-center"
