@@ -1,13 +1,13 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
 import { useState } from 'react'
 
 const QUICK_LINKS = [
   { href: '#home',     label: 'Home' },
   { href: '#services', label: 'Services' },
   { href: '#pricing',  label: 'Pricing' },
-  { href: '#contact',  label: 'Contact' },
 ]
 
 /* Social icon SVGs */
@@ -142,9 +142,9 @@ export default function Footer() {
               </li>
             </ul>
 
-            <a href="#contact" className="btn-gold inline-block mt-8 text-[9px]">
+            <Link href="/book" className="btn-gold inline-block mt-8 text-[9px]">
               Reserve Now
-            </a>
+            </Link>
           </div>
         </div>
       </div>

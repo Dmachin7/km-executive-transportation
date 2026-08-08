@@ -35,7 +35,7 @@ const PLANS = [
       'Meet & greet service',
     ],
     cta:     'Book Now',
-    href:    '#contact',
+    href:    '/book',
     featured: false,
   },
   {
@@ -49,7 +49,7 @@ const PLANS = [
       'Professional chauffeur',
     ],
     cta:     'Book Now',
-    href:    '#contact',
+    href:    '/book',
     featured: true,
   },
   {

@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 export default function Hero() {
   return (
     <section
@@ -64,9 +66,9 @@ export default function Hero() {
 
         {/* CTAs */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a href="#contact" className="btn-gold w-full sm:w-auto text-center">
+          <Link href="/book" className="btn-gold w-full sm:w-auto text-center">
             Book Your Ride
-          </a>
+          </Link>
           <a href="tel:+18139957275" className="btn-outline w-full sm:w-auto text-center">
             Call Today
           </a>

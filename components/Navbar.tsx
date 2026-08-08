@@ -2,12 +2,12 @@
 
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const NAV_LINKS = [
   { href: '#home',     label: 'Home' },
   { href: '#services', label: 'Services' },
   { href: '#pricing',  label: 'Pricing' },
-  { href: '#contact',  label: 'Contact' },
 ]
 
 export default function Navbar() {
@@ -74,9 +74,9 @@ export default function Navbar() {
 
           {/* ── Book Now CTA ── */}
           <div className="hidden md:block">
-            <a href="#contact" className="btn-gold text-[10px]">
+            <Link href="/book" className="btn-gold text-[10px]">
               Book Now
-            </a>
+            </Link>
           </div>
 
           {/* ── Hamburger ── */}
@@ -108,13 +108,13 @@ export default function Navbar() {
               {label}
             </a>
           ))}
-          <a
-            href="#contact"
+          <Link
+            href="/book"
             onClick={() => setMenuOpen(false)}
             className="btn-gold text-center mt-2"
           >
             Book Now
-          </a>
+          </Link>
         </div>
       </div>
     </nav>

@@ -1,14 +1,10 @@
-'use client'
+import Link from 'next/link'
 
 export default function FloatingContact() {
-  const scrollToContact = () => {
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
-  }
-
   return (
     /* Visible on mobile only — fixed bottom-right */
-    <button
-      onClick={scrollToContact}
+    <Link
+      href="/book"
       className="
         fixed bottom-6 right-6 z-40
         flex items-center gap-2.5
@@ -20,13 +16,13 @@ export default function FloatingContact() {
         transition-all duration-300
         md:hidden
       "
-      aria-label="Scroll to contact form"
+      aria-label="Book your ride"
     >
       <svg className="w-4 h-4 flex-shrink-0" viewBox="0 0 16 16" fill="none" aria-hidden="true">
         <path d="M2 4h12v8a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4z" stroke="currentColor" strokeWidth="1.3" />
         <path d="M2 4l6 5 6-5" stroke="currentColor" strokeWidth="1.3" strokeLinejoin="round" />
       </svg>
-      Contact Now
-    </button>
+      Book Now
+    </Link>
   )
 }

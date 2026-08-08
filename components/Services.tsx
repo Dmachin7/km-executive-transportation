@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import AnimatedSection from './AnimatedSection'
 
 const SERVICES = [
@@ -86,15 +87,15 @@ export default function Services() {
 
                 {/* Book link */}
                 <div className="mt-8 pt-6 border-t border-white/5">
-                  <a
-                    href="#contact"
+                  <Link
+                    href="/book"
                     className="inline-flex items-center gap-2 text-km-gold text-[10px] tracking-luxury uppercase font-semibold hover:gap-3 transition-all duration-200"
                   >
                     Book This Service
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                       <path d="M2 7H12M8 3L12 7L8 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </AnimatedSection>
