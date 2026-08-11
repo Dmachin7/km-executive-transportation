@@ -8,13 +8,13 @@ interface Props {
 export default function Step1YourInfo({ state, update }: Props) {
   return (
     <div>
-      <h2 className="font-playfair text-2xl sm:text-3xl text-white tracking-[0.02em] mb-2">
+      <h2 className="font-playfair text-xl sm:text-3xl text-white tracking-[0.02em] mb-1 sm:mb-2">
         Your <span className="text-km-gold italic">Information</span>
       </h2>
-      <p className="text-white/45 text-sm mb-10">Let's start with how we can reach you.</p>
+      <p className="text-white/45 text-sm mb-4 sm:mb-10">Let's start with how we can reach you.</p>
 
-      <div className="space-y-6">
-        <div className="grid sm:grid-cols-2 gap-6">
+      <div className="space-y-4 sm:space-y-6">
+        <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
           <div>
             <label className="form-label" htmlFor="firstName">
               First Name <span className="text-km-gold">*</span>

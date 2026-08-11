@@ -66,8 +66,8 @@ function CheckoutForm({
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
-      <div className="bg-km-dark border border-white/10 p-6">
+    <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+      <div className="bg-km-dark border border-white/10 p-3 sm:p-6">
         <PaymentElement options={{ layout: 'tabs' }} />
       </div>
 
@@ -162,15 +162,15 @@ export default function Step6Payment({ state, onSuccess }: Props) {
 
   return (
     <div>
-      <h2 className="font-playfair text-2xl sm:text-3xl text-white tracking-[0.02em] mb-2">
+      <h2 className="font-playfair text-xl sm:text-3xl text-white tracking-[0.02em] mb-1 sm:mb-2">
         Payment
       </h2>
-      <p className="text-white/45 text-sm mb-2">
+      <p className="text-white/45 text-sm mb-1 sm:mb-2">
         {state.paymentType === 'deposit' ? 'Deposit' : 'Full payment'} due now
       </p>
-      <p className="font-playfair text-3xl text-km-gold mb-10">${amount.toFixed(2)}</p>
+      <p className="font-playfair text-2xl sm:text-3xl text-km-gold mb-4 sm:mb-10">${amount.toFixed(2)}</p>
 
-      {error && <p className="text-red-400 text-sm mb-6">{error}</p>}
+      {error && <p className="text-red-400 text-sm mb-4 sm:mb-6">{error}</p>}
 
       {!clientSecret && !error && <p className="text-white/40 text-sm">Preparing secure payment…</p>}
 

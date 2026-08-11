@@ -79,12 +79,12 @@ interface Props {
 export default function Step2SelectService({ state, update }: Props) {
   return (
     <div>
-      <h2 className="font-playfair text-2xl sm:text-3xl text-white tracking-[0.02em] mb-2">
+      <h2 className="font-playfair text-xl sm:text-3xl text-white tracking-[0.02em] mb-1 sm:mb-2">
         Select Your <span className="text-km-gold italic">Service</span>
       </h2>
-      <p className="text-white/45 text-sm mb-10">Choose the service that fits your trip.</p>
+      <p className="text-white/45 text-sm mb-4 sm:mb-10">Choose the service that fits your trip.</p>
 
-      <div className="grid sm:grid-cols-2 gap-5">
+      <div className="grid sm:grid-cols-2 gap-3 sm:gap-5">
         {SERVICES.map((svc) => {
           const selected = state.serviceType === svc.type
           return (
@@ -92,14 +92,20 @@ export default function Step2SelectService({ state, update }: Props) {
               key={svc.type}
               type="button"
               onClick={() => update({ serviceType: svc.type })}
-              className={`group text-left p-6 lg:p-8 border transition-all duration-300 ${
+              className={`group text-left p-4 sm:p-6 lg:p-8 border transition-all duration-300 flex sm:block items-center gap-4 sm:gap-0 ${
                 selected ? 'bg-[#0f0d07] border-km-gold shadow-[0_0_30px_rgba(201,168,76,0.15)]' : 'bg-km-dark border-white/5 hover:border-km-gold/40'
               }`}
             >
-              <div className={`mb-5 transition-colors ${selected ? 'text-km-gold' : 'text-km-gold/70 group-hover:text-km-gold'}`}>{svc.icon}</div>
-              <h3 className="font-playfair text-lg text-white mb-2 tracking-[0.01em]">{svc.title}</h3>
-              <p className="text-km-gold text-xs font-semibold mb-3">{svc.rate}</p>
-              <p className="text-white/50 text-sm leading-relaxed">{svc.body}</p>
+              <div
+                className={`[&_svg]:w-7 [&_svg]:h-7 sm:[&_svg]:w-9 sm:[&_svg]:h-9 mb-0 sm:mb-5 flex-shrink-0 transition-colors ${selected ? 'text-km-gold' : 'text-km-gold/70 group-hover:text-km-gold'}`}
+              >
+                {svc.icon}
+              </div>
+              <div>
+                <h3 className="font-playfair text-base sm:text-lg text-white mb-0.5 sm:mb-2 tracking-[0.01em]">{svc.title}</h3>
+                <p className="text-km-gold text-[11px] sm:text-xs font-semibold sm:mb-3">{svc.rate}</p>
+                <p className="hidden sm:block text-white/50 text-sm leading-relaxed">{svc.body}</p>
+              </div>
             </button>
           )
         })}

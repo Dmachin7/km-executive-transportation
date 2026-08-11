@@ -2,7 +2,7 @@ const STEP_LABELS = ['Your Info', 'Service', 'Trip Details', 'Add-Ons', 'Review'
 
 export default function StepIndicator({ current }: { current: number }) {
   return (
-    <div className="flex items-center justify-center gap-1 sm:gap-3 mb-12 lg:mb-16 overflow-x-auto px-2">
+    <div className="flex-shrink-0 flex items-center justify-center gap-1 sm:gap-3 mb-3 sm:mb-12 lg:mb-16 overflow-x-auto px-2">
       {STEP_LABELS.map((label, i) => {
         const step = i + 1
         const isActive = step === current
@@ -11,7 +11,7 @@ export default function StepIndicator({ current }: { current: number }) {
           <div key={label} className="flex items-center gap-1 sm:gap-3 flex-shrink-0">
             <div className="flex flex-col items-center gap-2">
               <div
-                className={`w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center text-xs font-bold border transition-all duration-300 ${
+                className={`w-6 h-6 sm:w-9 sm:h-9 flex items-center justify-center text-[10px] sm:text-xs font-bold border transition-all duration-300 ${
                   isActive
                     ? 'bg-km-gold text-black border-km-gold'
                     : isDone

@@ -24,15 +24,15 @@ export default function Step5Review({ state, update }: Props) {
 
   return (
     <div>
-      <h2 className="font-playfair text-2xl sm:text-3xl text-white tracking-[0.02em] mb-2">
+      <h2 className="font-playfair text-xl sm:text-3xl text-white tracking-[0.02em] mb-1 sm:mb-2">
         Review &amp; <span className="text-km-gold italic">Payment</span>
       </h2>
-      <p className="text-white/45 text-sm mb-10">Confirm your trip details and choose how to pay.</p>
+      <p className="text-white/45 text-sm mb-4 sm:mb-10">Confirm your trip details and choose how to pay.</p>
 
       {/* Price breakdown card */}
-      <div className="bg-km-dark border border-white/10 p-6 lg:p-8 mb-8">
-        <p className="eyebrow text-[9px] mb-5">Price Breakdown</p>
-        <div className="space-y-3">
+      <div className="bg-km-dark border border-white/10 p-4 sm:p-6 lg:p-8 mb-4 sm:mb-8">
+        <p className="eyebrow text-[9px] mb-3 sm:mb-5">Price Breakdown</p>
+        <div className="space-y-2 sm:space-y-3">
           {pricing.breakdown.map((line, i) => (
             <div key={i} className="flex items-center justify-between text-sm">
               <span className="text-white/55">{line.label}</span>
@@ -42,46 +42,46 @@ export default function Step5Review({ state, update }: Props) {
             </div>
           ))}
         </div>
-        <div className="border-t border-km-gold/30 mt-6 pt-6 flex items-end justify-between">
+        <div className="border-t border-km-gold/30 mt-3 sm:mt-6 pt-3 sm:pt-6 flex items-end justify-between">
           <span className="text-white/60 text-sm tracking-luxury uppercase">Total</span>
-          <span className="font-playfair text-3xl lg:text-4xl text-km-gold">${pricing.total.toFixed(2)}</span>
+          <span className="font-playfair text-2xl sm:text-3xl lg:text-4xl text-km-gold">${pricing.total.toFixed(2)}</span>
         </div>
       </div>
 
       {/* Payment option cards */}
-      <div className="grid sm:grid-cols-2 gap-5">
+      <div className="grid sm:grid-cols-2 gap-3 sm:gap-5">
         <button
           type="button"
           onClick={() => update({ paymentType: 'full' })}
-          className={`text-left p-6 lg:p-7 border transition-all duration-300 ${
+          className={`text-left p-4 sm:p-6 lg:p-7 border transition-all duration-300 ${
             state.paymentType === 'full' ? 'bg-[#0f0d07] border-km-gold' : 'bg-km-dark border-white/5 hover:border-km-gold/30'
           }`}
           aria-pressed={state.paymentType === 'full'}
         >
-          <p className="eyebrow text-[9px] mb-3">Pay In Full</p>
-          <p className="font-playfair text-2xl text-white mb-4">${pricing.total.toFixed(2)}</p>
-          <p className="text-white/55 text-sm mb-2">Complete payment now</p>
-          <p className="text-white/35 text-xs leading-relaxed">Fully refundable until 24 hours before your scheduled pickup</p>
+          <p className="eyebrow text-[9px] mb-2 sm:mb-3">Pay In Full</p>
+          <p className="font-playfair text-xl sm:text-2xl text-white mb-1 sm:mb-4">${pricing.total.toFixed(2)}</p>
+          <p className="text-white/55 text-sm mb-1 sm:mb-2">Complete payment now</p>
+          <p className="hidden sm:block text-white/35 text-xs leading-relaxed">Fully refundable until 24 hours before your scheduled pickup</p>
         </button>
 
         <button
           type="button"
           onClick={() => update({ paymentType: 'deposit' })}
-          className={`text-left p-6 lg:p-7 border transition-all duration-300 ${
+          className={`text-left p-4 sm:p-6 lg:p-7 border transition-all duration-300 ${
             state.paymentType === 'deposit' ? 'bg-[#0f0d07] border-km-gold' : 'bg-km-dark border-white/5 hover:border-km-gold/30'
           }`}
           aria-pressed={state.paymentType === 'deposit'}
         >
-          <p className="eyebrow text-[9px] mb-3">Pay Deposit</p>
-          <p className="font-playfair text-2xl text-white mb-4">${depositAmount.toFixed(2)}</p>
-          <p className="text-white/55 text-sm mb-2">Charge ${depositAmount.toFixed(2)} now (25% deposit)</p>
-          <p className="text-white/35 text-xs leading-relaxed">Deposit refundable until 24 hours before scheduled pickup</p>
+          <p className="eyebrow text-[9px] mb-2 sm:mb-3">Pay Deposit</p>
+          <p className="font-playfair text-xl sm:text-2xl text-white mb-1 sm:mb-4">${depositAmount.toFixed(2)}</p>
+          <p className="text-white/55 text-sm mb-1 sm:mb-2">Charge ${depositAmount.toFixed(2)} now (25% deposit)</p>
+          <p className="hidden sm:block text-white/35 text-xs leading-relaxed">Deposit refundable until 24 hours before scheduled pickup</p>
         </button>
       </div>
 
       {state.paymentType === 'deposit' && (
-        <div className="mt-6 bg-km-dark border border-km-gold/25 p-6">
-          <p className="text-km-gold text-sm font-semibold mb-2">📋 About your remaining balance</p>
+        <div className="mt-3 sm:mt-6 bg-km-dark border border-km-gold/25 p-4 sm:p-6">
+          <p className="text-km-gold text-sm font-semibold mb-1 sm:mb-2">📋 About your remaining balance</p>
           <p className="text-white/55 text-sm leading-relaxed">
             Your remaining balance of ${balanceDue.toFixed(2)} will be charged to your card on file on the day of your
             service, prior to your pickup time. You will receive a receipt when the charge is processed.

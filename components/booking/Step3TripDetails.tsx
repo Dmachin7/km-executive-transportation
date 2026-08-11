@@ -17,6 +17,7 @@ export default function Step3TripDetails({ state, update }: Props) {
 
   const [distanceLoading, setDistanceLoading] = useState(false)
   const [distanceError, setDistanceError] = useState<string | null>(null)
+  const [isDemoDistance, setIsDemoDistance] = useState(false)
 
   useEffect(() => {
     if (!isMileage || !state.pickupAddress.trim() || !state.dropoffAddress.trim()) return
@@ -33,6 +34,7 @@ export default function Step3TripDetails({ state, update }: Props) {
         if (!res.ok) throw new Error()
         const data = await res.json()
         update({ distanceMiles: data.distanceMiles, durationMinutes: data.durationMinutes })
+        setIsDemoDistance(!!data.demo)
       } catch {
         setDistanceError("Couldn't calculate distance — you can still continue, we'll confirm before your ride.")
       } finally {
@@ -47,12 +49,12 @@ export default function Step3TripDetails({ state, update }: Props) {
 
   return (
     <div>
-      <h2 className="font-playfair text-2xl sm:text-3xl text-white tracking-[0.02em] mb-2">
+      <h2 className="font-playfair text-xl sm:text-3xl text-white tracking-[0.02em] mb-1 sm:mb-2">
         Trip <span className="text-km-gold italic">Details</span>
       </h2>
-      <p className="text-white/45 text-sm mb-10">Tell us where and when.</p>
+      <p className="text-white/45 text-sm mb-4 sm:mb-10">Tell us where and when.</p>
 
-      <div className="space-y-6">
+      <div className="space-y-4 sm:space-y-6">
         <div>
           <label className="form-label" htmlFor="pickupAddress">
             Pickup Address <span className="text-km-gold">*</span>
@@ -84,12 +86,13 @@ export default function Step3TripDetails({ state, update }: Props) {
             {!distanceLoading && state.distanceMiles !== null && (
               <p className="text-km-gold text-xs mt-2">
                 Estimated driving distance: {state.distanceMiles} miles (~{state.durationMinutes} minutes)
+                {isDemoDistance && <span className="text-white/30"> — demo estimate, connect Google Maps for live data</span>}
               </p>
             )}
             {!distanceLoading && distanceError && <p className="text-white/40 text-xs mt-2">{distanceError}</p>}
 
             {!distanceLoading && isLongDistanceReclassified(state.serviceType!, state.durationMinutes || undefined) && (
-              <div className="mt-4 bg-km-gold text-black px-5 py-4 text-sm rounded-sm font-medium">
+              <div className="mt-3 sm:mt-4 bg-km-gold text-black px-4 py-3 sm:px-5 sm:py-4 text-xs sm:text-sm rounded-sm font-medium">
                 ⚠️ This trip has been classified as Long Distance (45+ min drive) and will be billed at $6/mile instead of
                 $5/mile.
               </div>
@@ -97,7 +100,7 @@ export default function Step3TripDetails({ state, update }: Props) {
           </div>
         )}
 
-        <div className="grid sm:grid-cols-2 gap-6">
+        <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
           <div>
             <label className="form-label" htmlFor="pickupDate">
               {isHourly ? 'Start Date' : 'Pickup Date'} <span className="text-km-gold">*</span>
@@ -137,7 +140,7 @@ export default function Step3TripDetails({ state, update }: Props) {
               {state.isRoundTrip ? '✓ Round Trip' : 'Round Trip'}
             </button>
             {state.isRoundTrip && (
-              <div className="mt-5 max-w-xs">
+              <div className="mt-3 sm:mt-5 max-w-xs">
                 <label className="form-label" htmlFor="returnTime">
                   Return Time
                 </label>
@@ -148,7 +151,7 @@ export default function Step3TripDetails({ state, update }: Props) {
                   value={state.returnTime}
                   onChange={(e) => update({ returnTime: e.target.value })}
                 />
-                <p className="text-km-gold/80 text-xs mt-3">Round trip discount: -$10 applied</p>
+                <p className="text-km-gold/80 text-xs mt-2 sm:mt-3">Round trip discount: -$10 applied</p>
               </div>
             )}
           </div>

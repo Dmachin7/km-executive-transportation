@@ -5,6 +5,23 @@ function normalize(address: string) {
   return address.trim().toLowerCase().replace(/\s+/g, ' ')
 }
 
+// Demo fallback — used only when GOOGLE_MAPS_API_KEY isn't configured yet,
+// so the booking flow (and the pricing engine) can be clicked through
+// end-to-end before Maps is wired up. Deterministic per address pair, not
+// random, so the same demo addresses always produce the same numbers.
+// Automatically stops being used the moment a real key is set — nothing
+// else needs to change.
+function mockDistance(origin: string, destination: string) {
+  let hash = 0
+  const combined = `${origin}|${destination}`
+  for (let i = 0; i < combined.length; i++) {
+    hash = (hash * 31 + combined.charCodeAt(i)) >>> 0
+  }
+  const distanceMiles = 5 + (hash % 41) // 5–45 miles
+  const durationMinutes = Math.round(distanceMiles * 2.4) // roughly city-driving pace
+  return { distanceMiles, durationMinutes }
+}
+
 export async function POST(req: NextRequest) {
   const { origin, destination } = await req.json()
 
@@ -30,6 +47,17 @@ export async function POST(req: NextRequest) {
       durationMinutes: cached.duration_minutes,
       distanceText: `${cached.distance_miles} mi`,
       durationText: `${cached.duration_minutes} min`,
+    })
+  }
+
+  if (!process.env.GOOGLE_MAPS_API_KEY) {
+    const { distanceMiles, durationMinutes } = mockDistance(originNorm, destinationNorm)
+    return NextResponse.json({
+      distanceMiles,
+      durationMinutes,
+      distanceText: `${distanceMiles} mi`,
+      durationText: `${durationMinutes} min`,
+      demo: true,
     })
   }
 
