@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getServiceSupabase } from '@/lib/supabase'
+import { getResend, FROM_EMAIL } from '@/lib/resend'
+import { bookingConfirmationEmail, adminNewBookingEmail } from '@/lib/emails'
 
 // Records the outcome of the initial (automatic-capture) charge once Stripe
 // confirms it client-side. There is no manual capture step anymore — this
@@ -39,6 +41,32 @@ export async function PATCH(req: NextRequest, { params }: { params: { id: string
 
   if (error) {
     return NextResponse.json({ error: error.message }, { status: 500 })
+  }
+
+  // Best-effort — a failed email shouldn't fail the booking, which is
+  // already confirmed and paid at this point.
+  try {
+    const resend = getResend()
+    const confirmation = bookingConfirmationEmail(booking)
+    const adminAlert = adminNewBookingEmail(booking)
+    await Promise.all([
+      resend.emails.send({
+        from: FROM_EMAIL,
+        to: booking.customer_email,
+        subject: confirmation.subject,
+        html: confirmation.html,
+        text: confirmation.text,
+      }),
+      resend.emails.send({
+        from: FROM_EMAIL,
+        to: process.env.ADMIN_EMAIL!,
+        subject: adminAlert.subject,
+        html: adminAlert.html,
+        text: adminAlert.text,
+      }),
+    ])
+  } catch (emailError) {
+    console.error('Booking confirmation email failed to send:', emailError)
   }
 
   return NextResponse.json({ booking })

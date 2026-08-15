@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getServiceSupabase } from '@/lib/supabase'
 import { getStripe } from '@/lib/stripe'
+import { getResend, FROM_EMAIL } from '@/lib/resend'
+import { paymentReceiptEmail } from '@/lib/emails'
 
 // TODO: gate this to admin sessions once /auth + middleware exist. There is
 // no session/role check yet — this route is not safe to expose publicly
@@ -59,7 +61,19 @@ export async function POST(_req: NextRequest, { params }: { params: { id: string
     return NextResponse.json({ error: updateError.message }, { status: 500 })
   }
 
-  // TODO: send receipt email via Resend once email templates are wired.
+  try {
+    const resend = getResend()
+    const receipt = paymentReceiptEmail(updated, balanceDue)
+    await resend.emails.send({
+      from: FROM_EMAIL,
+      to: updated.customer_email,
+      subject: receipt.subject,
+      html: receipt.html,
+      text: receipt.text,
+    })
+  } catch (emailError) {
+    console.error('Payment receipt email failed to send:', emailError)
+  }
 
   return NextResponse.json({ success: true, amountCharged: balanceDue, booking: updated })
 }
