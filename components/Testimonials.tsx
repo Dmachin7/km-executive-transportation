@@ -2,19 +2,14 @@ import AnimatedSection from './AnimatedSection'
 
 const TESTIMONIALS = [
   {
-    quote:  'The absolute standard for executive travel in Tampa. Professional, punctual, and the Suburban was immaculate.',
-    author: 'Jennifer S.',
-    title:  'Corporate Liaison',
+    quote:
+      'We had an amazing experience! Our driver was professional, friendly, and communicative from the moment he picked us up until he dropped us off. He made sure my girlfriends and I felt safe the entire time, and his customer service was top-notch. We even ended up making a playlist together, which made the ride even more fun! I truly appreciated how attentive and accommodating he was throughout the whole experience. I will definitely be using this service again and highly recommend it!',
+    author: 'KM Executive Transportation',
   },
   {
-    quote:  'Our primary choice for late-night airport transfers. Direct communication with the chauffeur makes every transition seamless.',
-    author: 'Marcus V.',
-    title:  'Technology Executive',
-  },
-  {
-    quote:  'Exceptional reliability for our group gala transportation. Immaculate vehicle quality and superior professionalism across the board.',
-    author: 'Sarah L.',
-    title:  'Senior Event Coordinator',
+    quote:
+      "Hakeem made our Tampa trip truly stress-free and enjoyable. He was always responsive, got us to every destination on time, and gave excellent recommendations for things to do and places to visit. After a packed concert with terrible traffic, he went out of his way to pick us up, showing his dedication and professionalism. Friendly, reliable, and knowledgeable, Hakeem was a huge part of what made our vacation so memorable.",
+    author: 'KM Executive Transportation',
   },
 ]
 
@@ -27,14 +22,14 @@ export default function Testimonials() {
         <AnimatedSection className="text-center mb-16 lg:mb-20">
           <span className="gold-line mx-auto" />
           <p id="testimonials-heading" className="eyebrow">
-            Trusted by Tampa&apos;s Professionals
+            What Our Riders Are Saying
           </p>
         </AnimatedSection>
 
         {/* Cards */}
-        <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid sm:grid-cols-2 gap-6 lg:gap-8 max-w-4xl mx-auto">
           {TESTIMONIALS.map((t, i) => (
-            <AnimatedSection key={t.author} delay={i * 120}>
+            <AnimatedSection key={i} delay={i * 120}>
               <figure className="h-full bg-km-dark border border-white/5 hover:border-km-gold/20 p-8 lg:p-10 flex flex-col transition-all duration-400">
 
                 {/* Gold opening quote */}
@@ -64,7 +59,6 @@ export default function Testimonials() {
                   <p className="text-km-gold text-[10px] tracking-luxury uppercase font-semibold">
                     — {t.author}
                   </p>
-                  <p className="text-white/35 text-xs mt-1">{t.title}</p>
                 </figcaption>
               </figure>
             </AnimatedSection>

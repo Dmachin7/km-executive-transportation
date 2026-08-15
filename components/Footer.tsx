@@ -62,7 +62,7 @@ export default function Footer() {
             </div>
 
             <p className="text-white/40 text-sm leading-relaxed max-w-xs">
-              Tampa Bay&rsquo;s premier private chauffeur service — delivering executive-level comfort, reliability, and discretion, 24/7.
+              Tampa Bay&rsquo;s private chauffeur service — reliable, professional, available 24/7.
             </p>
 
             {/* Social links */}

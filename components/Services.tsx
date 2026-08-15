@@ -16,7 +16,7 @@ const SERVICES = [
       </svg>
     ),
     title: 'Private Chauffeur Service',
-    body: `Elevate your daily itinerary with professional hourly bookings. Whether for business meetings or site visits, our private drivers provide a refined, discreet environment tailored to your executive needs.`,
+    body: `Book by the hour for meetings, site visits, or whatever your day requires. Your driver waits, adjusts, and keeps things moving — no re-booking between stops.`,
   },
   {
     icon: (
@@ -30,7 +30,7 @@ const SERVICES = [
       </svg>
     ),
     title: 'Airport Transfers',
-    body: `Seamless arrivals and departures across Tampa, St. Petersburg, and Clearwater. Our 24/7 executive service is meticulously timed to your schedule — ensuring you arrive in uncompromised comfort and quiet sophistication.`,
+    body: `Flight-tracked and timed to your schedule, available 24/7 across Tampa, St. Petersburg, and Clearwater. You land, we're already there.`,
   },
   {
     icon: (
@@ -44,7 +44,7 @@ const SERVICES = [
       </svg>
     ),
     title: 'Group & Event Transportation',
-    body: `From curated nightlife experiences to executive beach outings, our spacious black Chevrolet Suburban accommodates your group in elevated comfort and style. Every detail thoughtfully managed.`,
+    body: `Nights out, weddings, group outings — the Suburban seats up to 7 comfortably, and we handle the logistics so you don't have to.`,
   },
 ]
 

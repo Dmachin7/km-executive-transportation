@@ -78,20 +78,18 @@ export default function About() {
 
             <div className="space-y-5 text-white/55 text-sm leading-[1.9]">
               <p>
-                Experience the pinnacle of private travel across Tampa Bay, where every detail is
-                thoughtfully curated to deliver a refined and effortless journey. Our pristine black
-                Chevrolet Suburban serves as more than just transportation—it is a statement of
-                sophistication, comfort, and quiet confidence.
+                We built KM Executive around one idea: your ride shouldn&apos;t be the stressful part
+                of your day. Our black Chevrolet Suburban shows up clean, on time, and exactly where
+                you need it — no surge pricing, no guesswork.
               </p>
               <p>
-                Immaculately maintained and meticulously prepared for each ride, it reflects our
-                unwavering commitment to excellence in both presentation and performance.
+                Every vehicle is inspected and detailed before each ride, because how it looks and
+                runs says everything about how seriously we take the job.
               </p>
               <p>
-                From the moment your experience begins, you are met with a standard of service that
-                prioritizes professionalism, discretion, and precision. Every route is carefully
-                planned, every arrival executed seamlessly, ensuring your schedule is honored
-                without compromise.
+                Your chauffeur knows the route, respects your time, and stays out of your way unless
+                you need something. That&apos;s the whole standard: be on time, be professional, be
+                easy to work with.
               </p>
             </div>
 

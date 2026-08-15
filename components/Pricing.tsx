@@ -164,7 +164,7 @@ export default function Pricing() {
           <span className="gold-line mx-auto" />
           <p className="eyebrow mb-4">Transparent Rates</p>
           <h2 className="font-playfair text-3xl sm:text-4xl md:text-5xl text-white tracking-[0.03em] mb-4">
-            Executive Taste,{' '}
+            Executive Class,{' '}
             <span className="text-km-gold italic">Executive Rates</span>
           </h2>
         </AnimatedSection>
