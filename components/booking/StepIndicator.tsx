@@ -2,16 +2,19 @@ const STEP_LABELS = ['Your Info', 'Service', 'Trip Details', 'Add-Ons', 'Review'
 
 export default function StepIndicator({ current }: { current: number }) {
   return (
-    <div className="flex-shrink-0 flex items-center justify-center gap-1 sm:gap-3 mb-3 sm:mb-12 lg:mb-16 overflow-x-auto px-2">
-      {STEP_LABELS.map((label, i) => {
-        const step = i + 1
-        const isActive = step === current
-        const isDone = step < current
-        return (
-          <div key={label} className="flex items-center gap-1 sm:gap-3 flex-shrink-0">
-            <div className="flex flex-col items-center gap-2">
+    <div className="flex-shrink-0 mb-4 sm:mb-8 lg:mb-10">
+      <p className="text-center text-km-gold text-[10px] sm:text-xs tracking-luxury uppercase font-semibold mb-3">
+        Step {current} of {STEP_LABELS.length} — {STEP_LABELS[current - 1]}
+      </p>
+      <div className="flex items-center justify-center gap-1.5 sm:gap-2 px-2">
+        {STEP_LABELS.map((label, i) => {
+          const step = i + 1
+          const isActive = step === current
+          const isDone = step < current
+          return (
+            <div key={label} className="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
               <div
-                className={`w-6 h-6 sm:w-9 sm:h-9 flex items-center justify-center text-[10px] sm:text-xs font-bold border transition-all duration-300 ${
+                className={`w-6 h-6 sm:w-8 sm:h-8 flex items-center justify-center text-[10px] sm:text-xs font-bold border transition-all duration-300 flex-shrink-0 ${
                   isActive
                     ? 'bg-km-gold text-black border-km-gold'
                     : isDone
@@ -27,16 +30,13 @@ export default function StepIndicator({ current }: { current: number }) {
                   step
                 )}
               </div>
-              <span className={`hidden sm:block text-[9px] tracking-luxury uppercase ${isActive ? 'text-km-gold' : 'text-white/30'}`}>
-                {label}
-              </span>
+              {step < STEP_LABELS.length && (
+                <div className={`w-4 sm:w-8 h-px ${isDone ? 'bg-km-gold/50' : 'bg-white/10'}`} aria-hidden="true" />
+              )}
             </div>
-            {step < STEP_LABELS.length && (
-              <div className={`w-4 sm:w-10 h-px ${isDone ? 'bg-km-gold/50' : 'bg-white/10'}`} aria-hidden="true" />
-            )}
-          </div>
-        )
-      })}
+          )
+        })}
+      </div>
     </div>
   )
 }

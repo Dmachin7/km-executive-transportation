@@ -12,8 +12,6 @@ import Step6Payment from '@/components/booking/Step6Payment'
 import Confirmation from '@/components/booking/Confirmation'
 import { BookingState, DEFAULT_BOOKING_STATE } from '@/components/booking/types'
 
-const STEP_LABELS = ['Your Info', 'Service', 'Trip Details', 'Add-Ons', 'Review', 'Payment']
-
 export default function BookPage() {
   const [step, setStep] = useState(1)
   const [state, setState] = useState<BookingState>(DEFAULT_BOOKING_STATE)
@@ -36,15 +34,10 @@ export default function BookPage() {
     <main className="h-[100dvh] sm:h-auto sm:min-h-screen bg-km-black flex flex-col overflow-hidden sm:overflow-visible sm:py-20 lg:py-28">
       <div className="flex flex-col flex-1 min-h-0 sm:flex-none sm:min-h-0 max-w-3xl mx-auto w-full px-4 sm:px-6 lg:px-10">
         {/* Compact mobile top bar */}
-        <div className="flex-shrink-0 flex sm:hidden items-center justify-between py-3">
+        <div className="flex-shrink-0 flex sm:hidden items-center py-3">
           <Link href="/" className="text-white/50 hover:text-km-gold text-xs tracking-luxury uppercase transition-colors">
             ← Home
           </Link>
-          {!confirmedBookingNumber && (
-            <span className="text-km-gold text-[10px] tracking-luxury uppercase font-semibold">
-              Step {step} of 6 — {STEP_LABELS[step - 1]}
-            </span>
-          )}
         </div>
 
         {/* Full header, desktop only */}
