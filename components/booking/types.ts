@@ -14,7 +14,13 @@ export interface BookingState {
 
   // Step 3
   pickupAddress: string
+  pickupPlaceId: string | null
+  pickupLat: number | null
+  pickupLng: number | null
   dropoffAddress: string
+  dropoffPlaceId: string | null
+  dropoffLat: number | null
+  dropoffLng: number | null
   pickupDate: string // YYYY-MM-DD
   pickupTime: string // HH:MM 24h
   returnTime: string // HH:MM 24h
@@ -47,7 +53,13 @@ export const EMPTY_BOOKING_STATE: BookingState = {
   saveInfo: false,
   serviceType: null,
   pickupAddress: '',
+  pickupPlaceId: null,
+  pickupLat: null,
+  pickupLng: null,
   dropoffAddress: '',
+  dropoffPlaceId: null,
+  dropoffLat: null,
+  dropoffLng: null,
   pickupDate: '',
   pickupTime: '',
   returnTime: '',

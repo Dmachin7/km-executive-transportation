@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { BookingState, MILEAGE_SERVICES, HOURLY_SERVICES } from './types'
 import { isLongDistanceReclassified } from '@/lib/pricing'
+import AddressAutocompleteInput from './AddressAutocompleteInput'
 
 const PASSENGER_OPTIONS = ['1', '2', '3', '4', '5', '6', '7']
 
@@ -59,13 +60,19 @@ export default function Step3TripDetails({ state, update }: Props) {
           <label className="form-label" htmlFor="pickupAddress">
             Pickup Address <span className="text-km-gold">*</span>
           </label>
-          <input
+          <AddressAutocompleteInput
             id="pickupAddress"
-            type="text"
-            className="form-input"
             placeholder="Address or airport code"
             value={state.pickupAddress}
-            onChange={(e) => update({ pickupAddress: e.target.value })}
+            onChange={(v) => update({ pickupAddress: v })}
+            onPlaceSelected={(place) =>
+              update({
+                pickupAddress: place.address,
+                pickupPlaceId: place.placeId,
+                pickupLat: place.lat,
+                pickupLng: place.lng,
+              })
+            }
           />
         </div>
 
@@ -74,13 +81,19 @@ export default function Step3TripDetails({ state, update }: Props) {
             <label className="form-label" htmlFor="dropoffAddress">
               Dropoff Address <span className="text-km-gold">*</span>
             </label>
-            <input
+            <AddressAutocompleteInput
               id="dropoffAddress"
-              type="text"
-              className="form-input"
               placeholder="Address or destination"
               value={state.dropoffAddress}
-              onChange={(e) => update({ dropoffAddress: e.target.value })}
+              onChange={(v) => update({ dropoffAddress: v })}
+              onPlaceSelected={(place) =>
+                update({
+                  dropoffAddress: place.address,
+                  dropoffPlaceId: place.placeId,
+                  dropoffLat: place.lat,
+                  dropoffLng: place.lng,
+                })
+              }
             />
             {distanceLoading && <p className="text-white/40 text-xs mt-2">Calculating distance…</p>}
             {!distanceLoading && state.distanceMiles !== null && (
