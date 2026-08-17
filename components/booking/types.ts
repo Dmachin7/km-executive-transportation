@@ -77,24 +77,6 @@ export const EMPTY_BOOKING_STATE: BookingState = {
   paymentType: 'full',
 }
 
-// Demo prefill — service + trip fields pre-filled so the flow (and the
-// pricing engine) can be clicked through end-to-end before Google Maps is
-// wired up. Harmless once it is: real addresses just overwrite these.
-function threeDaysFromNowISODate(): string {
-  const d = new Date()
-  d.setDate(d.getDate() + 3)
-  return d.toISOString().slice(0, 10)
-}
-
-export const DEFAULT_BOOKING_STATE: BookingState = {
-  ...EMPTY_BOOKING_STATE,
-  serviceType: 'everyday',
-  pickupAddress: 'Tampa International Airport (TPA)',
-  dropoffAddress: '400 N Ashley Dr, Tampa, FL',
-  pickupDate: threeDaysFromNowISODate(),
-  pickupTime: '14:00',
-}
-
 export function gratuityPct(state: BookingState): number {
   if (state.gratuityChoice === 'custom') return Number(state.gratuityCustom) || 0
   return Number(state.gratuityChoice)

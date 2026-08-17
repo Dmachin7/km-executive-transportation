@@ -10,11 +10,11 @@ import Step4AddOns from '@/components/booking/Step4AddOns'
 import Step5Review from '@/components/booking/Step5Review'
 import Step6Payment from '@/components/booking/Step6Payment'
 import Confirmation from '@/components/booking/Confirmation'
-import { BookingState, DEFAULT_BOOKING_STATE } from '@/components/booking/types'
+import { BookingState, EMPTY_BOOKING_STATE } from '@/components/booking/types'
 
 export default function BookPage() {
   const [step, setStep] = useState(1)
-  const [state, setState] = useState<BookingState>(DEFAULT_BOOKING_STATE)
+  const [state, setState] = useState<BookingState>(EMPTY_BOOKING_STATE)
   const [confirmedBookingNumber, setConfirmedBookingNumber] = useState<string | null>(null)
 
   const update = (patch: Partial<BookingState>) => setState((prev) => ({ ...prev, ...patch }))
