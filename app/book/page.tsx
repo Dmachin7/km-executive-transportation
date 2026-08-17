@@ -67,7 +67,13 @@ export default function BookPage() {
             <>
               <div className="flex-1 min-h-0 overflow-y-auto p-5 sm:p-10 lg:p-14">
                 {step === 1 && <Step1YourInfo state={state} update={update} />}
-                {step === 2 && <Step2SelectService state={state} update={update} />}
+                {step === 2 && (
+                  <Step2SelectService
+                    state={state}
+                    update={update}
+                    onSelect={() => setTimeout(() => setStep((s) => Math.min(6, s + 1)), 350)}
+                  />
+                )}
                 {step === 3 && <Step3TripDetails state={state} update={update} />}
                 {step === 4 && <Step4AddOns state={state} update={update} />}
                 {step === 5 && <Step5Review state={state} update={update} />}

@@ -74,9 +74,10 @@ const SERVICES: Array<{ type: ServiceType; icon: React.ReactNode; title: string;
 interface Props {
   state: BookingState
   update: (patch: Partial<BookingState>) => void
+  onSelect?: () => void
 }
 
-export default function Step2SelectService({ state, update }: Props) {
+export default function Step2SelectService({ state, update, onSelect }: Props) {
   return (
     <div>
       <h2 className="font-playfair text-xl sm:text-3xl text-white tracking-[0.02em] mb-1 sm:mb-2">
@@ -91,7 +92,10 @@ export default function Step2SelectService({ state, update }: Props) {
             <button
               key={svc.type}
               type="button"
-              onClick={() => update({ serviceType: svc.type })}
+              onClick={() => {
+                update({ serviceType: svc.type })
+                onSelect?.()
+              }}
               className={`group text-left p-4 sm:p-6 lg:p-8 border transition-all duration-300 flex sm:block items-center gap-4 sm:gap-0 ${
                 selected ? 'bg-[#0f0d07] border-km-gold shadow-[0_0_30px_rgba(201,168,76,0.15)]' : 'bg-km-dark border-white/5 hover:border-km-gold/40'
               }`}
