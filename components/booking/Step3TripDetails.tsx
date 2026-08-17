@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react'
 import { BookingState, MILEAGE_SERVICES, HOURLY_SERVICES } from './types'
 import { isLongDistanceReclassified } from '@/lib/pricing'
 import AddressAutocompleteInput from './AddressAutocompleteInput'
+import DatePicker from './DatePicker'
+import TimePicker from './TimePicker'
 
 const PASSENGER_OPTIONS = ['1', '2', '3', '4', '5', '6', '7']
 
@@ -118,25 +120,13 @@ export default function Step3TripDetails({ state, update }: Props) {
             <label className="form-label" htmlFor="pickupDate">
               {isHourly ? 'Start Date' : 'Pickup Date'} <span className="text-km-gold">*</span>
             </label>
-            <input
-              id="pickupDate"
-              type="date"
-              className="form-input [color-scheme:dark]"
-              value={state.pickupDate}
-              onChange={(e) => update({ pickupDate: e.target.value })}
-            />
+            <DatePicker id="pickupDate" value={state.pickupDate} onChange={(v) => update({ pickupDate: v })} />
           </div>
           <div>
             <label className="form-label" htmlFor="pickupTime">
               {isHourly ? 'Start Time' : 'Pickup Time'} <span className="text-km-gold">*</span>
             </label>
-            <input
-              id="pickupTime"
-              type="time"
-              className="form-input [color-scheme:dark]"
-              value={state.pickupTime}
-              onChange={(e) => update({ pickupTime: e.target.value })}
-            />
+            <TimePicker id="pickupTime" value={state.pickupTime} onChange={(v) => update({ pickupTime: v })} />
           </div>
         </div>
 
@@ -157,13 +147,7 @@ export default function Step3TripDetails({ state, update }: Props) {
                 <label className="form-label" htmlFor="returnTime">
                   Return Time
                 </label>
-                <input
-                  id="returnTime"
-                  type="time"
-                  className="form-input [color-scheme:dark]"
-                  value={state.returnTime}
-                  onChange={(e) => update({ returnTime: e.target.value })}
-                />
+                <TimePicker id="returnTime" value={state.returnTime} onChange={(v) => update({ returnTime: v })} />
                 <p className="text-km-gold/80 text-xs mt-2 sm:mt-3">Round trip discount: -$10 applied</p>
               </div>
             )}
