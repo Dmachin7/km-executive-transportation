@@ -63,12 +63,12 @@ function StarIcon() {
   )
 }
 
-const SERVICES: Array<{ type: ServiceType; icon: React.ReactNode; title: string; rate: string; body: string }> = [
-  { type: 'everyday', icon: <CarIcon />, title: 'Everyday Transportation', rate: '$5/mile · Minimum $40', body: 'Point-to-point travel around Tampa Bay' },
-  { type: 'airport', icon: <PlaneIcon />, title: 'Airport Transportation', rate: '$5/mile · Minimum $50', body: 'All Tampa Bay area airports' },
-  { type: 'long_distance', icon: <HighwayIcon />, title: 'Long Distance Transportation', rate: '$6/mile · Minimum $50', body: 'Travel beyond the Tampa Bay area' },
-  { type: 'chauffeur', icon: <SteeringWheelIcon />, title: 'Private Chauffeur', rate: '$100/hour · 2-hour minimum', body: 'Hourly service, you set the itinerary' },
-  { type: 'event', icon: <StarIcon />, title: 'Event Transportation', rate: '$100/hour · 2-hour minimum', body: 'Weddings, proms, concerts & more' },
+const SERVICES: Array<{ type: ServiceType; icon: React.ReactNode; title: string; body: string }> = [
+  { type: 'everyday', icon: <CarIcon />, title: 'Everyday Transportation', body: 'Point-to-point travel around Tampa Bay' },
+  { type: 'airport', icon: <PlaneIcon />, title: 'Airport Transportation', body: 'All Tampa Bay area airports' },
+  { type: 'long_distance', icon: <HighwayIcon />, title: 'Long Distance Transportation', body: 'Travel beyond the Tampa Bay area' },
+  { type: 'chauffeur', icon: <SteeringWheelIcon />, title: 'Private Chauffeur', body: 'Hourly service, you set the itinerary' },
+  { type: 'event', icon: <StarIcon />, title: 'Event Transportation', body: 'Weddings, proms, concerts & more' },
 ]
 
 interface Props {
@@ -103,8 +103,7 @@ export default function Step2SelectService({ state, update }: Props) {
               </div>
               <div>
                 <h3 className="font-playfair text-base sm:text-lg text-white mb-0.5 sm:mb-2 tracking-[0.01em]">{svc.title}</h3>
-                <p className="text-km-gold text-[11px] sm:text-xs font-semibold sm:mb-3">{svc.rate}</p>
-                <p className="hidden sm:block text-white/50 text-sm leading-relaxed">{svc.body}</p>
+                <p className="hidden sm:block text-white/50 text-sm leading-relaxed mt-1">{svc.body}</p>
               </div>
             </button>
           )

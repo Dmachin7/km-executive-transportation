@@ -8,6 +8,7 @@ export interface PlaceResult {
   placeId: string | null
   lat: number | null
   lng: number | null
+  isAirport: boolean
 }
 
 interface Props {
@@ -40,7 +41,7 @@ export default function AddressAutocompleteInput({ id, placeholder, value, onCha
 
         const google = (window as any).google
         const autocomplete = new google.maps.places.Autocomplete(inputRef.current, {
-          fields: ['formatted_address', 'place_id', 'geometry'],
+          fields: ['formatted_address', 'place_id', 'geometry', 'types'],
           componentRestrictions: { country: 'us' },
           bounds: TAMPA_BAY_BOUNDS,
         })
@@ -54,6 +55,7 @@ export default function AddressAutocompleteInput({ id, placeholder, value, onCha
             placeId: place.place_id || null,
             lat: place.geometry?.location?.lat() ?? null,
             lng: place.geometry?.location?.lng() ?? null,
+            isAirport: !!place.types?.includes('airport'),
           })
         })
 

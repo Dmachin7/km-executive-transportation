@@ -21,6 +21,14 @@ export default function Step3TripDetails({ state, update }: Props) {
   const [distanceLoading, setDistanceLoading] = useState(false)
   const [distanceError, setDistanceError] = useState<string | null>(null)
   const [isDemoDistance, setIsDemoDistance] = useState(false)
+  const [airportSwitchNotice, setAirportSwitchNotice] = useState<string | null>(null)
+
+  const handleAirportDetected = () => {
+    if (state.serviceType && state.serviceType !== 'airport' && MILEAGE_SERVICES.includes(state.serviceType)) {
+      update({ serviceType: 'airport' })
+      setAirportSwitchNotice('We switched this to Airport Transportation since an airport was entered as your pickup or dropoff.')
+    }
+  }
 
   useEffect(() => {
     if (!isMileage || !state.pickupAddress.trim() || !state.dropoffAddress.trim()) return
@@ -64,17 +72,18 @@ export default function Step3TripDetails({ state, update }: Props) {
           </label>
           <AddressAutocompleteInput
             id="pickupAddress"
-            placeholder="Address or airport code"
+            placeholder={state.serviceType === 'airport' ? 'Address or airport code' : 'Enter pickup address'}
             value={state.pickupAddress}
             onChange={(v) => update({ pickupAddress: v })}
-            onPlaceSelected={(place) =>
+            onPlaceSelected={(place) => {
               update({
                 pickupAddress: place.address,
                 pickupPlaceId: place.placeId,
                 pickupLat: place.lat,
                 pickupLng: place.lng,
               })
-            }
+              if (place.isAirport) handleAirportDetected()
+            }}
           />
         </div>
 
@@ -88,15 +97,21 @@ export default function Step3TripDetails({ state, update }: Props) {
               placeholder="Address or destination"
               value={state.dropoffAddress}
               onChange={(v) => update({ dropoffAddress: v })}
-              onPlaceSelected={(place) =>
+              onPlaceSelected={(place) => {
                 update({
                   dropoffAddress: place.address,
                   dropoffPlaceId: place.placeId,
                   dropoffLat: place.lat,
                   dropoffLng: place.lng,
                 })
-              }
+                if (place.isAirport) handleAirportDetected()
+              }}
             />
+            {airportSwitchNotice && (
+              <div className="mt-3 bg-km-gold/10 border border-km-gold/30 text-km-gold px-4 py-3 text-xs sm:text-sm rounded-sm">
+                ✈️ {airportSwitchNotice}
+              </div>
+            )}
             {distanceLoading && <p className="text-white/40 text-xs mt-2">Calculating distance…</p>}
             {!distanceLoading && state.distanceMiles !== null && (
               <p className="text-km-gold text-xs mt-2">
