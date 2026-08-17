@@ -1,13 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getServiceSupabase } from '@/lib/supabase'
+import { getAdminProfile } from '@/lib/admin-auth'
 import { getStripe } from '@/lib/stripe'
 import { getResend, FROM_EMAIL } from '@/lib/resend'
 import { paymentReceiptEmail } from '@/lib/emails'
 
-// TODO: gate this to admin sessions once /auth + middleware exist. There is
-// no session/role check yet — this route is not safe to expose publicly
-// until that lands.
 export async function POST(_req: NextRequest, { params }: { params: { id: string } }) {
+  const admin = await getAdminProfile()
+  if (!admin) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+
   const supabase = getServiceSupabase()
 
   const { data: booking, error } = await supabase
